@@ -13,7 +13,7 @@ declare var Materialize: any;
 export class CrearComponent implements OnInit {
 	public modelo;
 	public paises = [];
-	public urlApi = "http://localhost:8080/proyecto_restaurante/servicios/insertar_plato.php";
+	private urlApi="http://localhost/api_restaurante/";
 
 	constructor(private http: Http) {
 		this.limpiar()
@@ -33,7 +33,7 @@ export class CrearComponent implements OnInit {
 			headers.append('Content-Type',
 				'application/json; charset=utf-8');
 
-			this.http.post(this.urlApi, JSON.stringify(this.modelo), headers)
+			this.http.post(this.urlApi+"insertar_plato.php", JSON.stringify(this.modelo), headers)
 				.subscribe(
 				res => info = res,
 				err => console.error(err),
@@ -63,8 +63,7 @@ export class CrearComponent implements OnInit {
 
 	obtenerPaises() {
 		var url: string;
-		url = "http://localhost:8080/proyecto_restaurante/servicios/paises.json";
-		this.http.get(url)
+		this.http.get(this.urlApi+"paises.json")
 			.map((res: Response) => res.json())
 			.subscribe(
 			res => this.paises = res,
@@ -83,7 +82,7 @@ export class CrearComponent implements OnInit {
 			headers.append('Content-Type',
 				'application/json; charset=utf-8');
 
-			this.http.post("http://localhost:8080/proyecto_restaurante/servicios/conversion.php", JSON.stringify(conversion), headers)
+			this.http.post(this.urlApi+"conversion.php", JSON.stringify(conversion), headers)
 				.map((res: Response) => res.json())
 				.subscribe(
 				res => respuesta = res,
