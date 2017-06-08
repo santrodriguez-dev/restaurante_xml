@@ -14,6 +14,7 @@ export class InformacionComponent implements OnInit {
 
 	private clima: any;
 	private detalles: any;
+	private api="http://localhost/api_restaurante/";
 
 	constructor(private http: Http) {
 
@@ -42,7 +43,7 @@ export class InformacionComponent implements OnInit {
 
 	obtenerplatoEspecial(): void {
 		var url: string;
-		url = "http://localhost:8080/proyecto_restaurante/servicios/webservice_info.php";
+		url = this.api+"webservice_info.php";
 		this.http.get(url)
 			.map((res: Response) => res.json())
 			.subscribe(
@@ -61,7 +62,7 @@ export class InformacionComponent implements OnInit {
 			const headers = new Headers();
 			headers.append('Content-Type', 'application/json; charset=utf-8');
 
-			this.http.post("http://localhost:8080/proyecto_restaurante/servicios/webservice_info.php", this.numero, headers)
+			this.http.post(this.api+"webservice_info.php", this.numero, headers)
 				.map((res: Response) => res.json())
 				.subscribe(
 				res => this.respuesta = res,

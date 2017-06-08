@@ -12,6 +12,7 @@ declare var $: any;
 })
 export class ConsultarComponent implements OnInit {
 	public platos: Array<any>;
+	private api="http://localhost/api_restaurante/";
 
 	filtro: any;
 	constructor(private http: Http) { }
@@ -24,7 +25,7 @@ export class ConsultarComponent implements OnInit {
 	}
 	getXml() {
 		var url: string;
-		url = "http://localhost:8080/proyecto_restaurante/servicios/info_xml.php";
+		url = this.api+"info_xml.php";
 		this.http.get(url)
 			.map((res: Response) => res.json())
 			.subscribe(
@@ -44,8 +45,6 @@ export class ConsultarComponent implements OnInit {
 		};
 	}
 
-	private urlApi = "http://localhost:8080/proyecto_restaurante/servicios/crearXSL.php";
-
 	enviarFiltro() {
 		console.log(this.filtro);
 		const headers = new Headers();
@@ -53,7 +52,7 @@ export class ConsultarComponent implements OnInit {
 	    headers.append('Content-Type',
 	    	'application/json; charset=utf-8');
 
-	    this.http.post(this.urlApi, JSON.stringify(this.filtro), headers)
+	    this.http.post(this.api+"crearXSL.php", JSON.stringify(this.filtro), headers)
 	      	.subscribe(
 	      		res => info = res,
 	            err => console.error(err)

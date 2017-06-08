@@ -8,6 +8,7 @@ import { Http, Response } from '@angular/http';
 })
 export class ListarComponent implements OnInit {
 	public platos;
+	private api="http://localhost/api_restaurante/";
 
 	constructor(private http: Http) { }
 
@@ -17,8 +18,7 @@ export class ListarComponent implements OnInit {
 
 	getXml() {
 		var url:string;
-		url= "http://localhost:8080/proyecto_restaurante/servicios/info_xml.php";
-		this.http.get(url)
+		this.http.get(this.api+"info_xml.php")
 	    .map((res: Response) => res.json())
 	    .subscribe(
 	        res => this.platos = res.plato,

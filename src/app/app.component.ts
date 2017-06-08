@@ -15,6 +15,8 @@ declare var $:any;
 })
 export class AppComponent {
 
+	private api="http://localhost/api_restaurante/";
+
 	constructor() {}
 
 	ngOnInit() {
