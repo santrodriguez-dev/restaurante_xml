@@ -1,0 +1,41 @@
+<div class="progress" *ngIf="!platos">
+    <div class="indeterminate"></div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col s12 m10 l8 offset-l2 offset-m1">
+            <div class="card-panel z-depth-5" *ngIf="platos">
+                <h2 class="center-align">Lista de platos</h2>
+                <div class="row">
+                    <div class="col s12">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Categoría</th>
+                                    <th>Nacionalidad</th>
+                                    <th>Calorias</th>
+                                    <th>Precio (COP)</th>
+                                    <th>Precio (USD)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let plato of platos">
+                                    <td>{{plato.nombre}}</td>
+                                    <td>
+                                        <p *ngIf="plato['@attributes']">{{plato['@attributes'].categoria}}</p>
+                                        <p *ngIf="!plato['@attributes']">Vacío</p>
+                                    </td>
+                                    <td>{{plato.nacionalidad}}</td>
+                                    <td>{{plato.calorias}}</td>
+                                    <td>{{plato.precio_cop | number:'1.0-3'}}</td>
+                                    <td>{{plato.precio_usd | currency:'USD':true:'1.0-3'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

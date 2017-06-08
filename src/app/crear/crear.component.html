@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="row">
+        <div class="col s12 m10 l8 offset-l2 offset-m1">
+            <div class="card-panel z-depth-5">
+                <h2 class="center-align">Ingresar detalles</h2>
+                <form #platoForm="ngForm" (ngSubmit)="insertarInfo()">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select class="validate" materialize="material_select" required [(ngModel)]="modelo.categoria" name="categoria">
+                                <option value="" disabled selected>Categoría</option>
+                                <option value="Almuerzo">Almuerzo</option>
+                                <option value="Desayuno">Desayuno</option>
+                                <option value="Aperitivo">Aperitivo</option>
+                                <option value="Sopas">Sopas</option>
+                                <option value="Comida rápida">Comida rápida</option>
+                                <option value="Postre">Postre</option>
+                            </select>
+                            <label>Selecciona una categoría</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="nombre" type="text" class="validate" required [(ngModel)]="modelo.nombre" name="nombre" data-length="30" maxlength="{{30}}">
+                            <label for="nombre">Nombre</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select class="validate" materialize="material_select" required [(ngModel)]="modelo.nacionalidad" name="nacionalidad">
+                                <option value="" disabled selected>País</option>
+                                <option *ngFor="let pais of paises" [value]="pais">{{pais}}</option>
+                            </select>
+                            <label>Selecciona un país</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="cal" type="number" class="validate" required [(ngModel)]="modelo.cal" name="cal">
+                            <label for="cal">Número de calorías</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="precio" type="number" class="validate" required [(ngModel)]="modelo.precio_cop" name="precio_cop" (blur)="convertidorMoneda()">
+                            <label for="precio">Precio (COP)</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <p class="flow-text" *ngIf="modelo.precio_usd">=> {{modelo.precio_usd | currency:'USD':true:'1.2-2'}} USD</p>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <button class="btn waves-effect waves-green #c62828 red darken-3" type="submit" name="action" [disabled]="!platoForm.form.valid">Enviar
+                        <i class="material-icons right">send</i>
+                        </button>
+                        <button class="btn waves-effect waves-red #c62828 red darken-3" type="reset" name="action" (click)="limpiar()">Borrar
+                        <i class="material-icons right">delete</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Un momento por favor</h4>
+        <div class="center-align">
+            <div class="preloader-wrapper active">
+                <div class="spinner-layer spinner-red-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class=" modal-action modal-close waves-effect waves-green btn-flat">Aceptar</a>
+    </div>
+</div>

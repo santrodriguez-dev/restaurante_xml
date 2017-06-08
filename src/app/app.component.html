@@ -1,0 +1,46 @@
+<header>
+    <nav class="#c62828 red darken-3">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">Hobos Restaurant</a>
+            <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+        </div>
+        <ul id="slide-out" class="side-nav">
+            <li>
+                <img class="responsive-img" src="assets/logo5.gif">
+            </li>
+            <li [routerLinkActive]="['active']"><a routerLink="/crear" class="waves-effect waves-orange">Crear</a></li>
+            <li [routerLinkActive]="['active']"><a routerLink="/listar" class="waves-effect waves-orange">Listar</a></li>
+            <li [routerLinkActive]="['active']"><a routerLink="/consultar" class="waves-effect waves-orange">Consultar</a></li>
+            <li [routerLinkActive]="['active']"><a routerLink="/informacion" class="waves-effect waves-orange">Información</a></li>
+            
+        </ul>
+    </nav>
+</header>
+<main>
+    <router-outlet></router-outlet>
+</main>
+<footer class="page-footer #c62828 red darken-3">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Información</h5>
+                <p class="grey-text text-lighten-4">En los enlaces siguientes se pueden ver los recursos que fueron utilizados para visualizar correctamente
+                    el documento xml.</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" target="_blank" href="http://localhost:8080/proyecto_restaurante/servicios/xml/menu.xml">Documento XML</a></li>
+                    <li><a class="grey-text text-lighten-3" target="_blank" href="http://localhost:8080/proyecto_restaurante/servicios/xml/filtro_estilos.xsl">Documento XSL</a></li>
+                    <li><a class="grey-text text-lighten-3" target="_blank" href="http://localhost:8080/proyecto_restaurante/servicios/xml/esquema.xsd">Documento XSD</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2017 Copyright
+            <a class="grey-text text-lighten-4 right" href="">Más Links</a>
+        </div>
+    </div>
+</footer>

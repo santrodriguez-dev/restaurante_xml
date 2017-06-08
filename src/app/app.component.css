@@ -1,0 +1,15 @@
+.brand-logo{
+	font-style: italic;
+	font-weight: 600;
+}
+
+.responsive-img{
+	height: 135px;
+}
+li.active{
+	background-color: rgba(111, 28, 28, 0.26);
+}
+.progress{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
