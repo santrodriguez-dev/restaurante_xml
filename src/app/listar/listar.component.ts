@@ -8,7 +8,7 @@ import { Http, Response } from '@angular/http';
 })
 export class ListarComponent implements OnInit {
 	public platos;
-	private api="http://localhost/api_restaurante/";
+	private api="http://localhost:8080/api_restaurante/";
 
 	constructor(private http: Http) { }
 

@@ -14,7 +14,7 @@ export class InformacionComponent implements OnInit {
 
 	private clima: any;
 	private detalles: any;
-	private api="http://localhost/api_restaurante/";
+	private api="http://localhost:8080/api_restaurante/";
 
 	constructor(private http: Http) {
 

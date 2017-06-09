@@ -13,7 +13,7 @@ declare var Materialize: any;
 export class CrearComponent implements OnInit {
 	public modelo;
 	public paises = [];
-	private urlApi="http://localhost/api_restaurante/";
+	private urlApi="http://localhost:8080/api_restaurante/";
 
 	constructor(private http: Http) {
 		this.limpiar()

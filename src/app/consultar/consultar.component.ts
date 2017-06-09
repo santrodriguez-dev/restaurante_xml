@@ -12,7 +12,7 @@ declare var $: any;
 })
 export class ConsultarComponent implements OnInit {
 	public platos: Array<any>;
-	private api="http://localhost/api_restaurante/";
+	private api="http://localhost:8080/api_restaurante/";
 
 	filtro: any;
 	constructor(private http: Http) { }
