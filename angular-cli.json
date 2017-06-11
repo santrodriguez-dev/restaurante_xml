@@ -27,10 +27,10 @@
       	"../node_modules/hammerjs/hammer.js",
       	"../node_modules/materialize-css/dist/js/materialize.js"
       ],
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "source": "environments/environment.ts",
-        "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
+      "dev": "environments/environment.ts",
+      "prod": "environments/environment.prod.ts"
       }
     }
   ],
