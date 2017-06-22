@@ -20,7 +20,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let plato of platos">
+                                <tr *ngFor="let plato of platos" ng-if="platos">
                                     <td>{{plato.nombre}}</td>
                                     <td>
                                         <p *ngIf="plato['@attributes']">{{plato['@attributes'].categoria}}</p>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { FiltroPipe } from "../filtro.pipe";
+import { ListarService } from "../listar.service";
 
 declare var jQuery: any;
 declare var $: any;
@@ -12,26 +13,20 @@ declare var $: any;
 })
 export class ConsultarComponent implements OnInit {
 	public platos: Array<any>;
-	private api="http://localhost:8080/api_restaurante/";
+	private api = "http://localhost:8080/api_restaurante/";
 
 	filtro: any;
-	constructor(private http: Http) { }
+	constructor(private http: Http, private listarService: ListarService) { }
 
 	ngOnInit() {
-		this.getXml();
-		$('select').material_select();
-
-		this.reiniciarFiltro();
-	}
-	getXml() {
-		var url: string;
-		url = this.api+"info_xml.php";
-		this.http.get(url)
-			.map((res: Response) => res.json())
+		this.listarService.getXml()
 			.subscribe(
-			res => this.platos = res.plato,
-			err => console.error(err),
+			data => this.platos = data.plato,
+			error => alert(error),
 		);
+
+		$('select').material_select();
+		this.reiniciarFiltro();
 	}
 
 	reiniciarFiltro() {
@@ -46,18 +41,11 @@ export class ConsultarComponent implements OnInit {
 	}
 
 	enviarFiltro() {
-		console.log(this.filtro);
-		const headers = new Headers();
-		var info;
-	    headers.append('Content-Type',
-	    	'application/json; charset=utf-8');
-
-	    this.http.post(this.api+"crearXSL.php", JSON.stringify(this.filtro), headers)
-	      	.subscribe(
-	      		res => info = res,
-	            err => console.error(err)
-	            //,() => this.enviado()
-	      	);
+		this.listarService.enviarFiltro(this.filtro)
+			.subscribe(
+			data => this.filtro,
+			error => alert(error),
+		);
 	}
 
 }

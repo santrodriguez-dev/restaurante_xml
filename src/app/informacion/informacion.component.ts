@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 
 declare var google: any;
-declare var jQuery:any;
-declare var $:any;
+declare var jQuery: any;
+declare var $: any;
 
 @Component({
 	selector: 'app-informacion',
@@ -14,7 +14,7 @@ export class InformacionComponent implements OnInit {
 
 	private clima: any;
 	private detalles: any;
-	private api="http://localhost:8080/api_restaurante/";
+	private api = "http://localhost:8080/api_restaurante/";
 
 	constructor(private http: Http) {
 
@@ -43,7 +43,7 @@ export class InformacionComponent implements OnInit {
 
 	obtenerplatoEspecial(): void {
 		var url: string;
-		url = this.api+"webservice_info.php";
+		url = this.api + "webservice_info.php";
 		this.http.get(url)
 			.map((res: Response) => res.json())
 			.subscribe(
@@ -62,7 +62,7 @@ export class InformacionComponent implements OnInit {
 			const headers = new Headers();
 			headers.append('Content-Type', 'application/json; charset=utf-8');
 
-			this.http.post(this.api+"webservice_info.php", this.numero, headers)
+			this.http.post(this.api + "webservice_info.php", this.numero, headers)
 				.map((res: Response) => res.json())
 				.subscribe(
 				res => this.respuesta = res,

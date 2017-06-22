@@ -13,7 +13,7 @@ import { ListarComponent } from './listar/listar.component';
 import { ConsultarComponent } from './consultar/consultar.component';
 import { FiltroPipe } from './filtro.pipe';
 import { InformacionComponent } from './informacion/informacion.component';
-
+import { ListarService } from "./listar.service";
 //ng build --bh /proyecto_restaurante/
 
 @NgModule({
@@ -23,7 +23,7 @@ import { InformacionComponent } from './informacion/informacion.component';
     ListarComponent,
     ConsultarComponent,
     FiltroPipe,
-    InformacionComponent,
+    InformacionComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +32,7 @@ import { InformacionComponent } from './informacion/informacion.component';
     MaterializeModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ListarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
